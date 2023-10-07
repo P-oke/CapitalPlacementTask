@@ -42,18 +42,16 @@ namespace CapitalPlacementTask.UnitTests.ProgramDetailTest
                 Id = Guid.Parse("0f4bd353-41a6-4f09-b1c6-380d8c84cd62")
             };
 
-            //var responseMock = new Mock<ItemResponse<ProgramDetail>>(HttpStatusCode.OK, null, programDetail, null, null);
-            var responseMock2 = new Mock<ItemResponse<ProgramDetail>>();
-            responseMock2.Setup(x => x.Resource).Returns(programDetail); //expectedItem is of VehicleInfo type
+            var responseMock = new Mock<ItemResponse<ProgramDetail>>();
+            responseMock.Setup(x => x.Resource).Returns(programDetail); //expectedItem is of VehicleInfo type
 
 
             _fac.ProgramDetailContainer.Setup(c => c.ReadItemAsync<ProgramDetail>(programDetail.Id.ToString(), new PartitionKey(programDetail.Id.ToString()), null, default))
-                .ReturnsAsync(responseMock2.Object);
+                .ReturnsAsync(responseMock.Object);
 
             
             //Act
 
-           //var result = await _fac.ProgramDetailService.DeleteProgramDetail(It.IsAny<Guid>());
             var result = await _fac.ProgramDetailService.DeleteProgramDetail(programDetail.Id);
 
             //Assert
