@@ -56,5 +56,3 @@ This will execute all the unit tests in the project and provide the test results
 This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the license terms.
 
 ---
-
-Thank you for using and contributing to this project! If you have any questions or issues, please don't hesitate to [contact us](mailto:your-email@example.com).
