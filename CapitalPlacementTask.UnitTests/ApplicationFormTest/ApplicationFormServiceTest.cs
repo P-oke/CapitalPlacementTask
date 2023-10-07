@@ -56,6 +56,26 @@ namespace CapitalPlacementTask.UnitTests.ApplicationFormTest
         }
 
         [Fact]
+        private async Task CreateApplicationForm_ShouldReturnError_WhenProgramDetail_DoesnotExist() 
+        {
+            //Arrange
+
+            var responseMock = new Mock<ItemResponse<ProgramDetail>>();
+
+
+            _fac.ProgramDetailContainer.Setup(c => c.ReadItemAsync<ProgramDetail>(It.IsAny<string>(), It.IsAny<PartitionKey>(), null, default))
+            .ReturnsAsync(responseMock.Object);
+
+
+            //Act
+
+            var result = await _fac.ApplicationFormService.CreateApplicationForm(new CreateApplicationFormDTO());
+
+            //Assert
+            Assert.True(result.HasError);
+        }
+
+        [Fact]
         private async Task DeleteApplicationForm_ShouldWork()
         {
             //Arrange
@@ -81,6 +101,27 @@ namespace CapitalPlacementTask.UnitTests.ApplicationFormTest
         }
 
         [Fact]
+        private async Task DeleteApplicationForm_ShouldReturnError_WhenApplicationForm_DoesnotExist()
+        {
+            //Arrange
+
+            var responseMock = new Mock<ItemResponse<ApplicationForm>>();
+
+
+            _fac.ApplicationFormContainer.Setup(c => c.ReadItemAsync<ApplicationForm>(It.IsAny<string>(), It.IsAny<PartitionKey>(), null, default))
+            .ReturnsAsync(responseMock.Object);
+
+
+            //Act
+
+            var result = await _fac.ApplicationFormService.DeleteApplicationForm(It.IsAny<Guid>());
+
+            //Assert
+            Assert.True(result.HasError);
+        }
+
+
+        [Fact]
         private async Task GetApplicationForm_ShouldWork() 
         {
             //Arrange
@@ -103,6 +144,26 @@ namespace CapitalPlacementTask.UnitTests.ApplicationFormTest
 
             //Assert
             Assert.False(result.HasError);
+        }
+
+        [Fact]
+        private async Task GetApplicationForm_ShouldReturnError_WhenApplicationForm_DoesnotExist()
+        {
+            //Arrange
+
+            var responseMock = new Mock<ItemResponse<ApplicationForm>>();
+
+
+            _fac.ApplicationFormContainer.Setup(c => c.ReadItemAsync<ApplicationForm>(It.IsAny<string>(), It.IsAny<PartitionKey>(), null, default))
+            .ReturnsAsync(responseMock.Object);
+
+
+            //Act
+
+            var result = await _fac.ApplicationFormService.GetApplicationForm(It.IsAny<Guid>());
+
+            //Assert
+            Assert.True(result.HasError);
         }
 
         [Fact]
@@ -223,6 +284,27 @@ namespace CapitalPlacementTask.UnitTests.ApplicationFormTest
             //Assert
             Assert.False(result.HasError);
         }
+
+        [Fact]
+        private async Task UpdateApplicationForm_ShouldReturnError_WhenApplicationForm_DoesnotExist()
+        {
+            //Arrange
+
+            var responseMock = new Mock<ItemResponse<ApplicationForm>>();
+
+
+            _fac.ApplicationFormContainer.Setup(c => c.ReadItemAsync<ApplicationForm>(It.IsAny<string>(), It.IsAny<PartitionKey>(), null, default))
+            .ReturnsAsync(responseMock.Object);
+
+
+            //Act
+
+            var result = await _fac.ApplicationFormService.UpdateApplicationForm(new UpdateApplicationFormDTO(),It.IsAny<Guid>());
+
+            //Assert
+            Assert.True(result.HasError);
+        }
+
 
     }
 }

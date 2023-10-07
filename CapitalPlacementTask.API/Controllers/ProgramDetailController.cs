@@ -40,7 +40,6 @@ namespace CapitalPlacementTask.API.Controllers
             }
         }
 
-
         [HttpGet()]
         [ProducesResponseType(typeof(ResultModel<List<ProgramDetailDTO>>), 200)]
         public async Task<IActionResult> GetAllProgramDetails() 

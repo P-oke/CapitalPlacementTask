@@ -78,8 +78,6 @@ namespace CapitalPlacementTask.UnitTests.ProgramDetailTest
             Assert.True(result.HasError);
         }
 
-
-
         [Fact]
         private async Task UpdateProgramDetail_ShouldWork()
         {
@@ -104,6 +102,23 @@ namespace CapitalPlacementTask.UnitTests.ProgramDetailTest
             Assert.False(result.HasError);
         }
 
+        [Fact]
+        private async Task UpdateProgramDetail_ShouldReturnError_WhenProgramDetails_DoesNotExist()
+        {
+            //Arrange
+
+            var responseMock = new Mock<ItemResponse<ProgramDetail>>();
+
+            _fac.ProgramDetailContainer.Setup(c => c.ReadItemAsync<ProgramDetail>(It.IsAny<string>(), It.IsAny<PartitionKey>(), null, default))
+          .ReturnsAsync(responseMock.Object);
+
+
+            //Act
+            var result = await _fac.ProgramDetailService.UpdateProgramDetail(new UpdateProgramDetailDTO(), It.IsAny<Guid>());
+
+            //Assert
+            Assert.True(result.HasError);
+        }
 
         [Fact]
         private async Task GetProgramDetail_ShouldWork()
@@ -128,5 +143,24 @@ namespace CapitalPlacementTask.UnitTests.ProgramDetailTest
             //Assert
             Assert.False(result.HasError);
         }
+
+        [Fact]
+        private async Task GetProgramDetail_ShouldReturnError_WhenProgramDetails_DoesNotExist() 
+        {
+            //Arrange
+
+            var responseMock = new Mock<ItemResponse<ProgramDetail>>();
+
+            _fac.ProgramDetailContainer.Setup(c => c.ReadItemAsync<ProgramDetail>(It.IsAny<string>(), It.IsAny<PartitionKey>(), null, default))
+          .ReturnsAsync(responseMock.Object);
+
+
+            //Act
+            var result = await _fac.ProgramDetailService.GetProgramDetail(It.IsAny<Guid>());
+
+            //Assert
+            Assert.True(result.HasError);
+        }
+
     }
 }
