@@ -6,8 +6,9 @@ namespace CapitalPlacementTask.Application.DTOs.ApplicationFormDTOs.ApplicationD
 {
     public class CreateApplicationFormDTO
     {
+        public Guid ProgramDetailId { get; set; }
         public IFormFile CoverImage { get; set; }
-        public List<CreatePersonalInformationDTO> CreatePersonalInformationDTO { get; set; } = new();
-        public List<CreateProfileDTO> CreateProfileDTO { get; set; } = new();
+        public CreatePersonalInformationDTO CreatePersonalInformationDTO { get; set; }
+        public CreateProfileDTO CreateProfileDTO { get; set; }
     }
 }

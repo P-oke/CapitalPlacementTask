@@ -9,7 +9,7 @@
         public string Nationality { get; set; }
         public string CurrentResidence { get; set; }
         public string IdNumber { get; set; }
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
     }
 }

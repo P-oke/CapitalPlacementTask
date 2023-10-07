@@ -17,7 +17,7 @@ namespace CapitalPlacementTask.Application.DTOs.ApplicationFormDTOs.ProfileDTOs
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool CurrentlyWorkThere { get; set; }
-        internal List<UpdateEducationDTO> UpdateEducationDTO { get; set; } = new List<UpdateEducationDTO>();
+        public List<UpdateEducationDTO> UpdateEducationDTO { get; set; } = new List<UpdateEducationDTO>();
         public List<UpdateWorkExperienceDTO> UpdateWorkExperienceDTO { get; set; } = new List<UpdateWorkExperienceDTO>();
     }
 }

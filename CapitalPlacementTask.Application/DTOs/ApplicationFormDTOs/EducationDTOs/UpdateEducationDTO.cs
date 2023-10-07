@@ -8,6 +8,7 @@ namespace CapitalPlacementTask.Application.DTOs.ApplicationFormDTOs.EducationDTO
 {
     public class UpdateEducationDTO
     {
+        public Guid Id { get; set; }
         public string School { get; set; }
         public string Degree { get; set; }
         public string CourseName { get; set; }

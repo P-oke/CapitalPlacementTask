@@ -1,4 +1,7 @@
-﻿using Microsoft.Azure.Cosmos;
+﻿using CapitalPlacementTask.Application.Interfaces;
+using CapitalPlacementTask.Infrastructure.Implementation;
+using CapitalPlacementTask.Infrastructure.Implementations;
+using Microsoft.Azure.Cosmos;
 
 namespace CapitalPlacementTask.API
 {
@@ -33,9 +36,10 @@ namespace CapitalPlacementTask.API
 
         public static void AddServices(this IServiceCollection services, IWebHostEnvironment hostingEnvironment, IConfiguration configuration)
         {
-            //services.AddScoped<IProgramDetailService, ProgramDetailService>();  
+            services.AddScoped<IProgramDetailService, ProgramDetailService>();  
+            services.AddScoped<IApplicationFormService, ApplicationFormService>();  
+            services.AddScoped<IWorkFlowService, WorkFlowService>();  
+            services.AddScoped<IPreviewService, PreviewService>();  
         }
-
-
     }
 }

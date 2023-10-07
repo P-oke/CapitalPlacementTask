@@ -1,8 +1,7 @@
 ﻿namespace CapitalPlacementTask.Domain.Entities
 {
     public class ApplicationForm : BaseEntity<Guid>
-    {
-        
+    {        
         public string CoverImage { get; set; }
         public PersonalInformation PersonalInformation { get; set; }
         public Guid PersonalInformationId { get; set; }

@@ -8,6 +8,7 @@ namespace CapitalPlacementTask.Application.DTOs.ApplicationFormDTOs.WorkExperien
 {
     public class UpdateWorkExperienceDTO
     {
+        public Guid Id { get; set; }
         public string Company { get; set; }
         public string Title { get; set; }
         public string LocationOfWork { get; set; }

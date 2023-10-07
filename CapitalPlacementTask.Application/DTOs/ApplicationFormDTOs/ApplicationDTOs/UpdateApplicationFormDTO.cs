@@ -11,8 +11,11 @@ namespace CapitalPlacementTask.Application.DTOs.ApplicationFormDTOs.ApplicationD
 {
     public class UpdateApplicationFormDTO
     {
+        public Guid ProgramDetailId { get; set; }
+        public Guid PersonalInformationId { get; set; } 
+        public Guid ProfileId { get; set; }
         public IFormFile CoverImage { get; set; }
-        public List<UpdatePersonalInformationDTO> UpdatePersonalInformationDTO { get; set; } = new();
-        public List<UpdateProfileDTO> UpdateProfileDTO { get; set; } = new();
+        public UpdatePersonalInformationDTO UpdatePersonalInformationDTO { get; set; }
+        public UpdateProfileDTO UpdateProfileDTO { get; set; }
     }
 }
